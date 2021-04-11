@@ -22,6 +22,7 @@ $(document).ready(function () {
             800
         );
     });
+});
 
     // Validación de form Contacto
     const inputNombre = document.getElementById("nombre");
@@ -29,6 +30,7 @@ $(document).ready(function () {
     const inputEmail = document.getElementById("email");
     const inputMensaje = document.getElementById("motivo");
     const btnEmail = document.getElementById("btn-email");
+    const form= document.getElementsByClassName("form");
     const inputs = [inputNombre, inputTelefono, inputMensaje, inputEmail];
     let contExito = false;
 
@@ -81,6 +83,7 @@ $(document).ready(function () {
     // });
 
     function validar(e) {
+        console.log(e);
         const input = e.path[0];
         // expresion regular
         const er = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -145,6 +148,30 @@ $(document).ready(function () {
             }
         });
     });
+/*
+    // Enviar Mail por SMTP
+    btnEmail.addEventListener("submit", (e)=>{
+        e.preventDefault();
 
+        // Obtengo los valores del form
+        let nombre = inputNombre.value;
+        let telefono = inputTelefono.value;
+        let email = inputEmail.value;
+        let motivo = inputMensaje.value;
 
-});
+        form.reset();
+
+        sendEmail(nombre, telefono, email, motivo);
+    })
+
+    function sendEmail(nombre, telefono, email, motivo){
+        Email.send({
+            Host:"smtp.gmail.com",
+            Username:"naufragoslos@gmail.com",
+            To:"naufragoslos@gmail.com",
+            From:"",
+            Subject:"",
+            Body:""
+        }).then((motivo)=>);
+    
+    }*/

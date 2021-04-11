@@ -1,29 +1,59 @@
 @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rock+Salt&display=swap');
 
 html,
 body {
-    font-size: 1.3em;
+    font-size: 1.2em;
     font-family: 'Source Sans Pro', sans-serif;
+    background: rgb(2, 0, 36);
+    background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(15, 15, 15, 1) 38%, rgba(0, 212, 255, 1) 100%);
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
-a {
-    text-decoration: none;
-    cursor: pointer;
-}
 
-h2 {
-    color: #fafafa;
-}
-
-img {
-    width: 50%;
-    box-shadow: 0 2px 5px 5px #ffffffde;
-    margin-top: 20px;
-    padding: 15px;
-}
 
 /* Animación */
-.fadeInDown {
+.fadeInLeftBig {
+    -webkit-animation-name: fadeInLeftBig;
+    animation-name: fadeInLeftBig;
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+}
+
+@-webkit-keyframes fadeInLeftBig {
+    0% {
+        opacity: 0;
+        -webkit-transform: translate3d(-2000px, 0, 0);
+        transform: translate3d(-2000px, 0, 0);
+    }
+
+    100% {
+        opacity: 1;
+        -webkit-transform: none;
+        transform: none;
+    }
+}
+
+@keyframes fadeInLeftBig {
+    0% {
+        opacity: 0;
+        -webkit-transform: translate3d(-2000px, 0, 0);
+        transform: translate3d(-2000px, 0, 0);
+    }
+
+    100% {
+        opacity: 1;
+        -webkit-transform: none;
+        transform: none;
+    }
+}
+
+/* .fadeInDown {
     -webkit-animation-name: fadeInDown;
     animation-name: fadeInDown;
     -webkit-animation-duration: 1s;
@@ -58,7 +88,9 @@ img {
         -webkit-transform: none;
         transform: none;
     }
-}
+} */
+/* end Animación */
+
 
 
 /*--- Header ---*/
@@ -66,19 +98,136 @@ img {
 header {
     margin: auto;
     height: 1076px;
-    background-color: #251f1f;
-    background-image: url("../img/album.jpg");
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size: cover;
 }
+
+
+h1 {
+    font-family: 'Rock Salt', cursive;
+    text-shadow: 4px 5px 4px #800e13;
+    margin-top: auto !important;
+    padding-top: 50px;
+    padding-bottom: 0;
+    cursor: pointer;
+
+    font-size: 1.5em !important;
+    font-weight: bold;
+    color: #fafafa;
+}
+
+.pages {
+    text-align: center;
+    display: flex;
+    margin: auto;
+    justify-content: space-between;
+    width: 25%;
+}
+
+
+.social-media {
+    text-align: center;
+    display: flex;
+    margin: 3px auto 15px auto;
+    padding-top: 5px;
+    justify-content: space-between;
+    width: 6%;
+}
+
+a {
+    cursor: pointer;
+    font-weight: bold;
+    color: #59a9ff;
+}
+
+a:hover {
+    transition: all 0.35s;
+    font-weight: bold;
+    font-size: 1.1em;
+    text-decoration: none;
+    transform: scale(1.25);
+    color: #ffb600;
+    text-shadow: 1px 1px 3px #ff4800;
+}
+
+/* slider */
+
+.container-slider {
+    height: 40%;
+    border-radius: 15px;
+    width: 90%;
+    max-width: 900px;
+    margin: auto;
+    margin-top: 80px !important;
+    overflow: hidden;
+    box-shadow: 0 0 0 1px rgba(5, 4, 4, 0.479), 0 10px 50px;
+    /*para los botones*/
+    /* position: relative; */
+
+}
+
+/* limita el tamaño de las imagenes
+el porcentaje del ancho es proporcional a la
+cantidad de imagenes que deseamos utilizar.
+display flex para ponerlas una al lado de la otra */
+.slider {
+    display: flex;
+    height: 550px;
+    width: 400%;
+    margin-left: -100%;
+
+}
+
+.slider-section {
+    width: 100%;
+}
+
+.slider-img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.slider-btn {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    background: rgba(192, 183, 183, 0.465);
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 30px;
+    font-weight: bold;
+    font-family: monospace;
+    text-align: center;
+    border-radius: 50%;
+    cursor: pointer;
+
+
+}
+
+/* end slider */
+
+
+
+/* end header */
+
 
 /*--- Main ---*/
 
-main {
-    background-color: rgb(2 3 51 / 80%);
+h2 {
+    color: #fafafa;
 }
+
+#nosotros {
+    /* background-color: rgb(2 3 51 / 80%); */
+    /* display: none; */
+    border: 1px solid black;
+    background: rgb(2, 0, 36);
+    background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(15, 15, 15, 1) 0%, rgba(0, 212, 255, 1) 100%);
+}
+
+/* #nosotros:target{
+    display:block;
+} */
 
 
 
@@ -88,15 +237,16 @@ main {
 }
 
 p {
-    margin: 13px auto !important;
+    margin: 13px auto;
 }
 
-
+/*--- end Main ---*/
 
 /*--- Contacto ---*/
 
 #contacto {
     padding: 50px;
+    background-color: #fafafa;
 }
 
 .form {
@@ -123,13 +273,16 @@ span {
     pointer-events: all !important;
 }
 
-.valFallida{
+.valFallida {
     box-shadow: 0 1px 1px rgba(229, 103, 23, 0.075)inset, 0 0 8px red;
 }
 
-.valExitosa{
+.valExitosa {
     box-shadow: 0 1px 1px rgba(229, 103, 23, 0.075)inset, 0 0 4px rgb(13, 255, 0);
 }
+
+/*--- end Contacto ---*/
+
 
 /*--- Footer ---*/
 
@@ -148,6 +301,20 @@ footer {
 
 @media (min-width:900px) {
 
+    /* header */
+    h1 {
+        font-size: 3.5em !important;
+
+    }
+
+    /* slider */
+    .container-slider {
+        height: 50%;
+    }
+
+    /*end slider*/
+    /* end header */
+
     /* Main */
     .wiki {
         text-align: justify;
@@ -158,5 +325,8 @@ footer {
         padding: 0.5in 0.3in 0.3in 0.3in;
     }
 
+    /* end main */
+
     /* Contacto */
+    /* end Contacto */
 }

@@ -1,4 +1,4 @@
-$(document).ready(function () {
+document.addEventListener("DOMContentLoaded", () => {
     // Animación de desplazamiento a Sobre Nosotros
     $(".linkNosotros").click(function (e) {
         e.preventDefault();
@@ -22,156 +22,107 @@ $(document).ready(function () {
             800
         );
     });
-});
 
     // Validación de form Contacto
+    const btnEmail = document.getElementById("btn-email");
+    const form = document.getElementsByClassName("form");
     const inputNombre = document.getElementById("nombre");
     const inputTelefono = document.getElementById("telefono");
     const inputEmail = document.getElementById("email");
     const inputMensaje = document.getElementById("motivo");
-    const btnEmail = document.getElementById("btn-email");
-    const form= document.getElementsByClassName("form");
-    const inputs = [inputNombre, inputTelefono, inputMensaje, inputEmail];
-    let contExito = false;
+    const inputs = [inputNombre, inputTelefono, inputEmail, inputMensaje];
 
-    // inputNombre.addEventListener("blur", (e) => {
-    //     // si la cant de caracteres es mayor a 0
-    //     if (e.target.value.length > 0) {
-    //         inputNombre.classList.remove("valFallida");
-    //         inputNombre.classList.add("valExitosa");
+    // Expresiones Regulares
+    const er = {
+        nombre: /^[a-zA-ZÀ-ÿ\s]{1,40}$/,
+        telefono: /^\d{7,14}$/,
+        email: /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+    };
 
-    //     } else {
-    //         inputNombre.classList.remove("valExitosa");
-    //         inputNombre.classList.add("valFallida");
-    //     }
-    // });
+    const camposValidos = {
+        nombre: false,
+        telefono: false,
+        email: false,
+        mensaje:false
+    };
 
-    // inputTelefono.addEventListener("blur", (e) => {
-    //     // si la cant de caracteres es mayor a 0
-    //     if (e.target.value.length > 0) {
-    //         inputTelefono.classList.remove("valFallida");
-    //         inputTelefono.classList.add("valExitosa");
-
-    //     } else {
-    //         inputTelefono.classList.remove("valExitosa");
-    //         inputTelefono.classList.add("valFallida");
-    //     }
-    // });
-
-    // inputEmail.addEventListener("blur", (e) => {
-    //     // si la cant de caracteres es mayor a 0
-    //     if (e.target.value.length > 0) {
-    //         inputEmail.classList.remove("valFallida");
-    //         inputEmail.classList.add("valExitosa");
-
-    //     } else {
-    //         inputEmail.classList.remove("valExitosa");
-    //         inputEmail.classList.add("valFallida");
-    //     }
-    // });
-
-    // inputMensaje.addEventListener("blur", (e) => {
-    //     // si la cant de caracteres es mayor a 0
-    //     if (e.target.value.length > 0) {
-    //         inputMensaje.classList.remove("valFallida");
-    //         inputMensaje.classList.add("valExitosa");
-
-    //     } else {
-    //         inputMensaje.classList.remove("valExitosa");
-    //         inputMensaje.classList.add("valFallida");
-    //     }
-    // });
-
-    function validar(e) {
-        console.log(e);
-        const input = e.path[0];
-        // expresion regular
-        const er = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-
-        if (e.target.type === "email") {
-            er.test(e.target.value);
-        }
-        console.log(e.target.type);
-        if (e.target.value.length > 0) {
+    const validarCampos = (ex, input, campo) => {
+        if (ex.test(input.value)) {
             input.classList.remove("valFallida");
             input.classList.add("valExitosa");
+            camposValidos.campo = true;
         } else {
             input.classList.remove("valExitosa");
             input.classList.add("valFallida");
+            camposValidos.campo = false;
         }
-    }
+    };
 
-    // inputs.forEach((input) => {
-    //     input.addEventListener("blur", (e) => {
-    //         // se valida
-    //         validar(e);
-    //         // se activa el boton
-    //         if (input.classList.contains("valExitosa")) {
-    //             contExito++;
-    //             console.log(contExito);
-    //             if (contExito === inputs.length) {
-    //                 btnEmail.removeAttribute("disabled");
-    //                 contExito = 0;
-    //             }
-    //         } else if (input.classList.contains("valFallida") && contExito > 0){
-    //             contExito--;
-    //             btnEmail.setAttribute("disabled","");
-    //         }
-    //     });
-    // });
+    const validarForm = (e) => {
+        switch (e.target.name) {
+            case "nombre":
+                validarCampos(er.nombre, e.target, e.target.name);
+                break;
 
+            case "telefono":
+                validarCampos(er.telefono, e.target, e.target.name);
+                break;
+
+            case "email":
+                validarCampos(er.email, e.target, e.target.name);
+                break;
+
+            case "mensaje":
+                if (e.target.value.length > 0) {
+                    e.target.classList.remove("valFallida");
+                    e.target.classList.add("valExitosa");
+                    camposValidos.mensaje = true;
+                    break;
+
+                }else{
+                    e.target.classList.remove("valExitosa");
+                    e.target.classList.add("valFallida");
+                    camposValidos.mensaje = false;
+                    break;
+                }
+        }
+    };
+
+    /* eventos que validan */
     inputs.forEach((input) => {
-        input.addEventListener("blur", (e) => {
-            // se valida
-            validar(e);
-        });
+        input.addEventListener("keyup", validarForm);
+        input.addEventListener("blur", validarForm);
     });
 
-    inputs.forEach((input) => {
-        input.addEventListener("blur", (e) => {
-            // se activa el boton
-            console.log(contExito);
-            if (input.classList.contains("valExitosa")) {
-                contExito++;
-                console.log(contExito);
-                if (contExito === inputs.length) {
-                    btnEmail.removeAttribute("disabled");
-                    contExito = 0;
-                }
-            } else if (input.classList.contains("valFallida")){
-                if (contExito = 0) {
-                    
-                }
-                contExito--;
-                console.log(contExito);
-
-            }
-        });
-    });
-/*
     // Enviar Mail por SMTP
-    btnEmail.addEventListener("submit", (e)=>{
+    btnEmail.addEventListener("submit", (e) => {
         e.preventDefault();
+        if (camposValidos.nombre && camposValidos.telefono && camposValidos.email && camposValidos.mensaje) {
+            let dataEmail = [];
 
-        // Obtengo los valores del form
-        let nombre = inputNombre.value;
-        let telefono = inputTelefono.value;
-        let email = inputEmail.value;
-        let motivo = inputMensaje.value;
+            inputs.forEach(input => {
+                dataEmail.push(input.value);
+            });
 
-        form.reset();
+            form.reset();
+            enviarEmail(dataEmail);
 
-        sendEmail(nombre, telefono, email, motivo);
-    })
+        }
+    });
 
-    function sendEmail(nombre, telefono, email, motivo){
+    function enviarEmail(data){
         Email.send({
             Host:"smtp.gmail.com",
+            // Necesita ingresar a la cuenta
             Username:"naufragoslos@gmail.com",
+            Password:"",
+            // El receptor
             To:"naufragoslos@gmail.com",
-            From:"",
-            Subject:"",
-            Body:""
-        }).then((motivo)=>);
-    
-    }*/
+            // El remitente
+            From:"naufragoslos@gmail.com",
+            Subject:"test",
+            Body:`nombre: ${data[0]} <br> telefono: ${data[1]} <br> email: ${data[2]} <br> mensaje: ${data[3]}`,}).then((data) => alert("enviado"));
+    }
+});
+
+

@@ -3,10 +3,41 @@
 
 html,
 body {
+    scroll-behavior: smooth;
     font-size: 1.2em;
     font-family: 'Source Sans Pro', sans-serif;
     background: rgb(2, 0, 36);
     background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(15, 15, 15, 1) 38%, rgba(0, 212, 255, 1) 100%);
+    /* background: hsla(221, 45%, 73%, 1);
+
+    background: linear-gradient(90deg, hsla(221, 45%, 73%, 1) 0%, hsla(220, 78%, 29%, 1) 100%);
+
+    background: -moz-linear-gradient(90deg, hsla(221, 45%, 73%, 1) 0%, hsla(220, 78%, 29%, 1) 100%);
+
+    background: -webkit-linear-gradient(90deg, hsla(221, 45%, 73%, 1) 0%, hsla(220, 78%, 29%, 1) 100%);
+
+    filter: progid: DXImageTransform.Microsoft.gradient(startColorstr="#9BAFD9", endColorstr="#103783", GradientType=1); */
+
+
+    /* background: hsla(41, 100%, 70%, 1);
+
+    background: linear-gradient(90deg, hsla(41, 100%, 70%, 1) 0%, hsla(7, 76%, 47%, 1) 100%);
+
+    background: -moz-linear-gradient(90deg, hsla(41, 100%, 70%, 1) 0%, hsla(7, 76%, 47%, 1) 100%);
+
+    background: -webkit-linear-gradient(90deg, hsla(41, 100%, 70%, 1) 0%, hsla(7, 76%, 47%, 1) 100%);
+
+    filter: progid: DXImageTransform.Microsoft.gradient(startColorstr="#FFCF67", endColorstr="#D3321D", GradientType=1);
+ */
+
+
+
+
+
+
+
+
+
     -moz-user-select: none;
     -webkit-user-select: none;
     -ms-user-select: none;
@@ -97,7 +128,7 @@ body {
 
 header {
     margin: auto;
-    height: 1076px;
+    height: 100vh;
 }
 
 
@@ -115,24 +146,22 @@ h1 {
 }
 
 .pages {
-    text-align: center;
     display: flex;
     margin: auto;
     justify-content: space-between;
     width: 25%;
 }
 
-
 .social-media {
-    text-align: center;
     display: flex;
-    margin: 3px auto 15px auto;
-    padding-top: 5px;
+    margin: 50px auto 0 auto;
     justify-content: space-between;
-    width: 6%;
+    width: 9%;
+    font-size: 1.3em;
 }
 
 a {
+    display: inline-block;
     cursor: pointer;
     font-weight: bold;
     color: #59a9ff;
@@ -141,7 +170,6 @@ a {
 a:hover {
     transition: all 0.35s;
     font-weight: bold;
-    font-size: 1.1em;
     text-decoration: none;
     transform: scale(1.25);
     color: #ffb600;
@@ -151,17 +179,14 @@ a:hover {
 /* slider */
 
 .container-slider {
-    height: 40%;
+    height: 50%;
     border-radius: 15px;
     width: 90%;
     max-width: 900px;
-    margin: auto;
-    margin-top: 80px !important;
+    margin: 0 auto;
+    margin-top: 20px !important;
     overflow: hidden;
-    box-shadow: 0 0 0 1px rgba(5, 4, 4, 0.479), 0 10px 50px;
-    /*para los botones*/
-    /* position: relative; */
-
+    box-shadow: 0 0 0 0 rgba(5, 4, 4, 1), 0 10px 80px;
 }
 
 /* limita el tamaño de las imagenes
@@ -187,26 +212,7 @@ display flex para ponerlas una al lado de la otra */
     object-fit: cover;
 }
 
-.slider-btn {
-    position: absolute;
-    width: 40px;
-    height: 40px;
-    background: rgba(192, 183, 183, 0.465);
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 30px;
-    font-weight: bold;
-    font-family: monospace;
-    text-align: center;
-    border-radius: 50%;
-    cursor: pointer;
-
-
-}
-
 /* end slider */
-
-
 
 /* end header */
 
@@ -245,6 +251,7 @@ p {
 /*--- Contacto ---*/
 
 #contacto {
+    height:100vh;
     padding: 50px;
     background-color: #fafafa;
 }
@@ -272,6 +279,8 @@ span {
     cursor: not-allowed;
     pointer-events: all !important;
 }
+
+
 
 .valFallida {
     box-shadow: 0 1px 1px rgba(229, 103, 23, 0.075)inset, 0 0 8px red;
@@ -304,12 +313,11 @@ footer {
     /* header */
     h1 {
         font-size: 3.5em !important;
-
     }
 
     /* slider */
     .container-slider {
-        height: 50%;
+        height: fit-content;
     }
 
     /*end slider*/

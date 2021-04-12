@@ -89,7 +89,7 @@
     <!-- formulario de contacto -->
     <section id="contacto">
         <h3>Para contrataciones o cualquier otra información, no dude en ponerse en contacto con nosotros.</h3>
-        <form class="form" method="POST">
+        <form id="form" class="form" method="POST">
             <div class="form-group">
                 <label for="nombre">
                     <span>Nombre</span>
@@ -114,12 +114,12 @@
                 <label for="motivo">Mensaje</label>
                 <textarea class="form-control" id="motivo" rows="6" name="mensaje"></textarea>
             </div>
-            <button id="btn-email" type="submit" class="btn btn-success">Enviar</button>
+            <input id="btn-email" type="submit" class="btn btn-success" value="Enviar">
         </form>
-        <div class="alert alert-success" role="alert" hidden>
+        <div id="exito" class="alert alert-success" role="alert" hidden>
             <center>Correo enviado exitosamente.</center>
         </div>
-        <div class="alert alert-danger" role="alert" hidden>
+        <div id="error" class="alert alert-danger" role="alert" hidden>
             Error, revisa los datos e intentalo nuevamente.
         </div>
     </section>

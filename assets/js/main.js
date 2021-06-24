@@ -1,4 +1,4 @@
-// Validación de form Contacto
+// Var
 const btnEmail = document.getElementById("btn-email");
 const form = document.getElementById("form");
 const inputNombre = document.getElementById("nombre");
@@ -6,8 +6,34 @@ const inputTelefono = document.getElementById("telefono");
 const inputEmail = document.getElementById("email");
 const inputMensaje = document.getElementById("motivo");
 const inputs = [inputNombre, inputTelefono, inputEmail, inputMensaje];
-const mensajeError = document.getElementById("error");
-const mensajeExito = document.getElementById("exito");
+const spinner = `<div class="sk-chase">
+                        <div class="sk-chase-dot"></div>
+                        <div class="sk-chase-dot"></div>
+                        <div class="sk-chase-dot"></div>
+                        <div class="sk-chase-dot"></div>
+                        <div class="sk-chase-dot"></div>
+                        <div class="sk-chase-dot"></div>
+                    </div>`;
+
+form.appendChild(spinner);
+
+// Toast message
+function toastMessage(message, state) {
+    btnEmail.disabled = true;
+    this.popup = document.createElement("div");
+    this.popup.className = `toast slideInDown ${state}`;
+    document.body.appendChild(this.popup);
+    this.popup.textContent = message;
+
+    setTimeout(() => {
+        this.popup.classList.remove("slideInDown");
+        // this.popup.classList.add("slideOutUp");
+        this.popup.remove();
+        btnEmail.disabled = false;
+    }, 3000);
+}
+
+// Validación de form Contacto
 
 // Expresiones Regulares
 const er = {
@@ -25,10 +51,10 @@ const camposValidos = {
 
 const validarCampos = (ex, input, campo) => {
     if (ex.test(input.value)) {
-        input.style.border = '2px solid rgb(23, 168, 16)';
+        input.style.border = "2px solid rgb(23, 168, 16)";
         camposValidos[campo] = true;
     } else {
-        input.style.border = '2px solid rgb(172, 29, 29)';
+        input.style.border = "2px solid rgb(172, 29, 29)";
         camposValidos[campo] = false;
     }
 };
@@ -49,11 +75,11 @@ const validarForm = (e) => {
 
         case "mensaje":
             if (e.target.value.length > 0) {
-                e.target.style.border = '2px solid rgb(23, 168, 16)';
+                e.target.style.border = "2px solid rgb(23, 168, 16)";
                 camposValidos.mensaje = true;
                 break;
             } else {
-                e.target.style.border = '2px solid rgb(172, 29, 29)';
+                e.target.style.border = "2px solid rgb(172, 29, 29)";
                 camposValidos.mensaje = false;
                 break;
             }
@@ -86,12 +112,9 @@ function enviarEmail(data) {
     </div>`,
     })
         .then(() => {
-            mensajeExito.removeAttribute("hidden");
-            setTimeout(() => {
-                mensajeExito.setAttribute("hidden", "");
-            }, 3000);
+            toastMessage("Correo enviado exitosamente.", "success");
         })
-        .catch((err) => alert(err));
+        .catch((err) => toastMessage(err, "error"));
 }
 
 btnEmail.addEventListener("click", (e) => {
@@ -115,50 +138,15 @@ btnEmail.addEventListener("click", (e) => {
         form.reset();
 
         inputs.forEach((input) => {
-            input.classList.remove("valExitosa");
+            input.style.border = "2px solid #1f53c5";
         });
     } else {
-        mensajeError.removeAttribute("hidden");
-        setTimeout(() => {
-            mensajeError.setAttribute("hidden", "");
-        }, 2600);
+        inputs.forEach((input) => {
+            input.style.border = "2px solid #1f53c5";
+        });
+        toastMessage(
+            "Error, revise los datos e intentalo nuevamente.",
+            "error"
+        );
     }
-});
-
-
-document.addEventListener("DOMContentLoaded", () => {
-    // Animación de desplazamiento a Sobre Nosotros
-    // $(".linkNosotros").click(function (e) {
-    //     e.preventDefault();
-    //     const codigo = "#" + $(this).data("ancla");
-    //     $("html,body").animate(
-    //         {
-    //             scrollTop: $(codigo).offset().top,
-    //         },
-    //         800
-    //     );
-    // });
-    // Animación de desplazamiento a la sección Contacto
-    // $(".linkContacto").click(function (e) {
-    //     e.preventDefault();
-    //     const codigo = "#" + $(this).data("ancla");
-    //     $("html,body").animate(
-    //         {
-    //             scrollTop: $(codigo).offset().top,
-    //         },
-    //         800
-    //     );
-    // });
-    //Enviar Mail por SMTP
-    // btnEmail.addEventListener("submit", (e) => {
-    //     e.preventDefault();
-    //     if (camposValidos.nombre && camposValidos.telefono && camposValidos.email && camposValidos.mensaje) {
-    //         let dataEmail = [];
-    //         inputs.forEach(input => {
-    //             dataEmail.push(input.value);
-    //         });
-    //         form.reset();
-    //         enviarEmail(dataEmail);
-    //     }
-    // });
 });

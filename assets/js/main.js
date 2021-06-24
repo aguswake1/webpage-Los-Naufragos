@@ -7,30 +7,32 @@ const inputEmail = document.getElementById("email");
 const inputMensaje = document.getElementById("motivo");
 const inputs = [inputNombre, inputTelefono, inputEmail, inputMensaje];
 const spinner = `<div class="sk-chase">
-                        <div class="sk-chase-dot"></div>
-                        <div class="sk-chase-dot"></div>
-                        <div class="sk-chase-dot"></div>
-                        <div class="sk-chase-dot"></div>
-                        <div class="sk-chase-dot"></div>
-                        <div class="sk-chase-dot"></div>
-                    </div>`;
-
-form.appendChild(spinner);
+                <div class="sk-chase-dot"></div>
+                <div class="sk-chase-dot"></div>
+                <div class="sk-chase-dot"></div>
+                <div class="sk-chase-dot"></div>
+                <div class="sk-chase-dot"></div>
+                <div class="sk-chase-dot"></div>
+            </div>`;
 
 // Toast message
 function toastMessage(message, state) {
-    btnEmail.disabled = true;
-    this.popup = document.createElement("div");
-    this.popup.className = `toast slideInDown ${state}`;
-    document.body.appendChild(this.popup);
-    this.popup.textContent = message;
+    let popup = document.createElement("div");
+    popup.className = `toast slideInDown ${state}`;
+    document.body.appendChild(popup);
+    popup.textContent = message;
 
     setTimeout(() => {
-        this.popup.classList.remove("slideInDown");
+        // removing the spinner
+        const spinnerEnd = document.querySelector(".sk-chase");
+        spinnerEnd.remove();
+        // removing the popup
+        popup.classList.remove("slideInDown");
+        popup.remove();
         // this.popup.classList.add("slideOutUp");
-        this.popup.remove();
+        // reactivating the button
         btnEmail.disabled = false;
-    }, 3000);
+    }, 2500);
 }
 
 // Validación de form Contacto
@@ -119,6 +121,8 @@ function enviarEmail(data) {
 
 btnEmail.addEventListener("click", (e) => {
     e.preventDefault();
+    btnEmail.insertAdjacentHTML("beforebegin", spinner);
+    btnEmail.disabled = true;
 
     if (
         camposValidos.nombre &&

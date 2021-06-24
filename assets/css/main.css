@@ -139,11 +139,13 @@ header{
 }
 
 h1{
+    text-align: center;
     font-family: 'Rock Salt', cursive;
     text-shadow: 4px 5px 4px #800e13;
     cursor: pointer;
     font-weight: bold;
     color: #fafafa;
+    font-size: 30px;
 }
 
 .pages {
@@ -166,7 +168,6 @@ h1{
 a {
     font-weight: bold;
     color: #59a9ff;
-    font-size: 1em;
     text-decoration: none;
 }
 
@@ -366,7 +367,7 @@ h2 {
     font-family: sans-serif;
     text-align: center;
     border-radius: 20px;
-    box-shadow:  0 0 10px rgb(146 176 219 / 67%);
+    box-shadow:  0 0 10px rgb(51 47 151);
     color: #fafafa;
 
 }
@@ -401,5 +402,69 @@ h2 {
     transform: scale(1.25);
     color: #ffb600;
     text-shadow: 1px 1px 3px #ff4800;
-}
+    }
+
+    .pages{
+        width:47%;
+        font-size: 2.55vh;
+    }
+
+    .social-media{
+        width:25%;
+        font-size: 3.55vh;
+    }
+
+
+    h1{
+        font-size:8vh;
+    }
+
+    h2{
+        font-size:4vh
+    }
+
+    #nosotros {
+        min-height:300px;
+    }
+
+    #nosotros p {
+        font-size:25px;
+        line-height: 60px;
+    }
+
+    #contacto h3{
+        font-size:25px;
+        padding: 16px 10px 10px 10px;
+    }
+
+
+    #contacto{
+        margin: 18%;
+    }
+
+    #form label{
+        font-size: 23px;
+
+    }
+
+    #form{
+        padding: 6%;
+        box-shadow: 5px 20px 30px rgb(0 47 56);
+    }
+
+    #motivo, #email, #telefono, #nombre{
+        font-size: 18px;
+        margin: 15px auto 38px auto;
+    }
+
+
+    #btn-email{
+        display: flex;
+        justify-content: center;
+        margin: auto;
+        padding:1.5%;
+        width:28%;
+        font-size:20px;
+        border-radius:20px;
+    }
 }

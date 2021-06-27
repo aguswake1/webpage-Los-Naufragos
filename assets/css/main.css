@@ -2,113 +2,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Rock+Salt&display=swap');
 
-/* ANIMATIONS */
-
-
-.slideOutUp {
-    -webkit-animation-name: slideOutUp;
-    animation-name: slideOutUp;
-    -webkit-animation-duration: 0.5s;
-    animation-duration: 0.5s;
-    -webkit-animation-fill-mode: both;
-    animation-fill-mode: both;
-}
-
-@-webkit-keyframes slideOutUp {
-    0% {
-        -webkit-transform: translateY(0);
-        transform: translateY(0);
-    }
-    100% {
-        visibility: hidden;
-        -webkit-transform: translateY(-100%);
-        transform: translateY(-100%);
-    }
-}
-
-@keyframes slideOutUp {
-    0% {
-        -webkit-transform: translateY(0);
-        transform: translateY(0);
-    }
-    100% {
-        visibility: hidden;
-        -webkit-transform: translateY(-100%);
-        transform: translateY(-100%);
-    }
-}
-
-.slideInDown {
-    -webkit-animation-name: slideInDown;
-    animation-name: slideInDown;
-    -webkit-animation-duration: 0.5s;
-    animation-duration: 0.5s;
-    -webkit-animation-fill-mode: both;
-    animation-fill-mode: both;
-}
-
-@-webkit-keyframes slideInDown {
-    0% {
-        -webkit-transform: translateY(-100%);
-        transform: translateY(-100%);
-        visibility: visible;
-    }
-    100% {
-        -webkit-transform: translateY(0);
-        transform: translateY(0);
-    }
-}
-@keyframes slideInDown {
-    0% {
-        -webkit-transform: translateY(-100%);
-        transform: translateY(-100%);
-        visibility: visible;
-    }
-    100% {
-        -webkit-transform: translateY(0);
-        transform: translateY(0);
-    }
-}
-
-.fadeInLeftBig {
-    -webkit-animation-name: fadeInLeftBig;
-    animation-name: fadeInLeftBig;
-    -webkit-animation-duration: 1s;
-    animation-duration: 1s;
-    -webkit-animation-fill-mode: both;
-    animation-fill-mode: both;
-}
-
-@-webkit-keyframes fadeInLeftBig {
-    0% {
-        opacity: 0;
-        -webkit-transform: translate3d(-2000px, 0, 0);
-        transform: translate3d(-2000px, 0, 0);
-    }
-
-    100% {
-        opacity: 1;
-        -webkit-transform: none;
-        transform: none;
-    }
-}
-
-@keyframes fadeInLeftBig {
-    0% {
-        opacity: 0;
-        -webkit-transform: translate3d(-2000px, 0, 0);
-        transform: translate3d(-2000px, 0, 0);
-    }
-
-    100% {
-        opacity: 1;
-        -webkit-transform: none;
-        transform: none;
-    }
-}
-
-/* END ANIMATIONS */
-
 *{
     margin: 0;
     padding: 0;
@@ -126,6 +19,20 @@ html {
     user-select: none;
 }
 
+
+.up{
+    position:fixed;
+    bottom: 20px;
+    right: 20px;
+    border-radius:40px;
+    background-color:#fafafa;
+    box-shadow: 0 0 10px 2px rgba(5, 4, 4, 1), 0 10px 80px;
+}
+
+.up i{
+    font-size: 20px;
+    color: #021338;
+}
 .container{
     margin: auto;
     width: 90vw;
@@ -135,7 +42,7 @@ html {
 /* HEADER */
 
 header{
-    height: 100vh;
+    min-height: 100vh;
 }
 
 h1{
@@ -152,13 +59,13 @@ h1{
     display: flex;
     margin: 40px auto 0 auto;
     justify-content: space-between;
-    font-size: 15px;
+    font-size: 16px;
     width: 90%;
 }
 
 .social-media {
     display: flex;
-    margin: 30px auto 0 auto;
+    margin: 14% auto 0 auto;
     justify-content: space-between;
     width: 50%;
     font-size: 23px;
@@ -175,12 +82,9 @@ a {
 /* slider */
 
 .container-slider {
-    height: 50%;
     border-radius: 15px;
     width: 90%;
-    max-width: 900px;
-    margin: 0 auto;
-    margin-top: 20px !important;
+    margin: 20% auto;
     overflow: hidden;
     box-shadow: 0 0 0 0 rgba(5, 4, 4, 1), 0 10px 80px;
 }
@@ -191,8 +95,12 @@ cantidad de imagenes que deseamos utilizar.
 display flex para ponerlas una al lado de la otra */
 .slider {
     display: flex;
-    height: 550px;
-    width: 400%;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flex;
+    display: -o-flex;
+    width: 800%;
+    height:100%;
     margin-left: -100%;
 
 }
@@ -241,6 +149,7 @@ h2 {
     background: #fafafa;
     padding: 15px;
     margin-top: 20px;
+    margin-bottom: 50px;
 }
 
 #contacto h3{
@@ -283,6 +192,7 @@ h2 {
 }
 
 #btn-email:hover{
+    transition:all 0.25s ease;
     background: #33a54f;
 }
 
@@ -392,16 +302,47 @@ h2 {
 
 /* FOOTER */
 
+footer {
+    background: #141414;
+    width: 100%;
+    height: 200px;
+    color: #fafafa;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* END FOOTER */
+
 
 /* RESPONSIVE DESIGN */
 @media (min-width:900px) {
-    a:hover {
-    transition: all 0.35s;
-    font-weight: bold;
-    transform: scale(1.25);
-    color: #ffb600;
-    text-shadow: 1px 1px 3px #ff4800;
+    .up{
+        right: 40px;
+        bottom:40px
+    }
+
+    .up i{
+    font-size: 50px;
+    }
+
+    .pages a:hover, .social-media a:hover {
+        transition: all 0.35s;
+        font-weight: bold;
+        transform: scale(1.25);
+        color: #ffb600;
+        text-shadow: 1px 1px 3px #ff4800;
     }
 
     .pages{
@@ -410,6 +351,8 @@ h2 {
     }
 
     .social-media{
+        margin-top: 3%;
+
         width:25%;
         font-size: 3.55vh;
     }
@@ -418,6 +361,28 @@ h2 {
     h1{
         font-size:8vh;
     }
+    /* SLIDER */
+
+    .container-slider{
+        margin-top: 5%;
+        width: 50%;
+        height:10%;
+    }
+
+    .slider {
+        width: 800%;
+        height:60%;
+    }
+
+    .slider-section {
+        width: 100%;
+    }
+
+
+
+    /* END SLIDER */
+
+
 
     h2{
         font-size:4vh

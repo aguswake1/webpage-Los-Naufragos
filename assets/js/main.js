@@ -5,6 +5,7 @@ const inputNombre = document.getElementById("nombre");
 const inputTelefono = document.getElementById("telefono");
 const inputEmail = document.getElementById("email");
 const inputMensaje = document.getElementById("motivo");
+const goUp = document.querySelector(".up");
 const inputs = [inputNombre, inputTelefono, inputEmail, inputMensaje];
 const spinner = `<div class="sk-chase">
                 <div class="sk-chase-dot"></div>
@@ -14,29 +15,6 @@ const spinner = `<div class="sk-chase">
                 <div class="sk-chase-dot"></div>
                 <div class="sk-chase-dot"></div>
             </div>`;
-
-// Toast message
-function toastMessage(message, state) {
-    let popup = document.createElement("div");
-    popup.className = `toast slideInDown ${state}`;
-    document.body.appendChild(popup);
-    popup.textContent = message;
-
-    setTimeout(() => {
-        // removing the spinner
-        const spinnerEnd = document.querySelector(".sk-chase");
-        spinnerEnd.remove();
-        // removing the popup
-        popup.classList.remove("slideInDown");
-        popup.remove();
-        // this.popup.classList.add("slideOutUp");
-        // reactivating the button
-        btnEmail.disabled = false;
-    }, 2500);
-}
-
-// Validación de form Contacto
-
 // Expresiones Regulares
 const er = {
     nombre: /^[a-zA-ZÀ-ÿ\s]{1,40}$/,
@@ -60,7 +38,7 @@ const validarCampos = (ex, input, campo) => {
         camposValidos[campo] = false;
     }
 };
-
+// Validación de form Contacto
 const validarForm = (e) => {
     switch (e.target.name) {
         case "nombre":
@@ -88,18 +66,39 @@ const validarForm = (e) => {
     }
 };
 
-/* eventos que validan */
-inputs.forEach((input) => {
-    input.addEventListener("keyup", validarForm);
-    input.addEventListener("blur", validarForm);
-});
+// Toast message
+function toastMessage(message, state) {
+    let popup = document.createElement("div");
+    const spinnerEnd = document.querySelector(".sk-chase");
+    popup.className = `toast slideInDown ${state}`;
+    popup.textContent = message;
+
+    setTimeout(() => {
+        // removing the spinner
+        spinnerEnd.remove();
+        document.body.appendChild(popup);
+    }, 1100);
+
+    // se resta el tiempo de la funcion anterior
+    setTimeout(() => {
+        // removing the popup
+        popup.classList.remove("slideInDown");
+        popup.classList.add("slideOutUp");
+        // reactivating the button
+        btnEmail.disabled = false;
+    }, 3000);
+
+    setTimeout(() => {
+        popup.remove();
+    }, 3200);
+}
 
 function enviarEmail(data) {
     Email.send({
         Host: "smtp.elasticemail.com",
         // Necesita ingresar a la cuenta
         Username: "naufragoslos@gmail.com",
-        Password: "",
+        Password: "060512275A0E58703171806EA8358E2DC753",
         // El receptor
         To: "naufragoslos@gmail.com",
         // El remitente
@@ -111,7 +110,7 @@ function enviarEmail(data) {
         El nombre de la persona que se intenta contactar es <b>${data[0]}</b>, el telefono es <b>${data[1]}</b> y el email es <b>${data[2]}</b>, dejó el siguiente mensaje:
         </p>
         <p style="font-size:16px;">${data[3]}</p>
-    </div>`,
+        </div>`,
     })
         .then(() => {
             toastMessage("Correo enviado exitosamente.", "success");
@@ -119,6 +118,23 @@ function enviarEmail(data) {
         .catch((err) => toastMessage(err, "error"));
 }
 
+window.onscroll = function () {
+    if (window.scrollY >= "937") {
+        goUp.classList.remove("fadeOutRightBig");
+        goUp.classList.add("fadeInRightBig");
+    } else {
+        goUp.classList.remove("fadeInRightBig");
+        goUp.classList.add("fadeOutRightBig");
+    }
+};
+
+/* eventos que validan */
+inputs.forEach((input) => {
+    input.addEventListener("keyup", validarForm);
+    input.addEventListener("blur", validarForm);
+});
+
+// When the button is clicked
 btnEmail.addEventListener("click", (e) => {
     e.preventDefault();
     btnEmail.insertAdjacentHTML("beforebegin", spinner);

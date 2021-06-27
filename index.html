@@ -2,26 +2,35 @@
 <html lang="es">
     <head>
         <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta content="Los Naufragos Oficial" property="og:title" />
         <meta
             name="description"
+            property="og:description"
             content="Los Naufragos desde los años 70' con su música pop característicamente festiva"
         />
+        <meta />
+        <meta content="https://www.losnaufragos.com.ar/" property="og:url" />
+        <meta content="website" property="og:type" />
         <meta name="robots" content="index,follow" />
         <link
             rel="shortcut icon"
             type="image/x-icon"
             href="./assets/images/icono.ico"
         />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <script
             src="https://kit.fontawesome.com/e3d6c66eb0.js"
             crossorigin="anonymous"
         ></script>
         <link rel="stylesheet" href="./assets/css/main.css" />
+        <link rel="stylesheet" href="./assets/css/animations.css" />
         <title>Los Naufragos</title>
     </head>
     <body>
+        <a href="#header" class="up fadeOutRightBig">
+            <i class="fas fa-arrow-alt-circle-up"></i>
+        </a>
         <section class="container">
             <header id="header">
                 <h1 class="fadeInLeftBig">Los Náufragos</h1>
@@ -61,29 +70,57 @@
                     <div class="slider" id="slider">
                         <div class="slider-section">
                             <img
-                                src="./assets/images/slider/dolape.jpg"
-                                alt=""
+                                src="./assets/images/slider/album.jpg"
+                                alt='El album "¡Qué Confusión!" de Los Náufragos'
                                 class="slider-img"
                             />
                         </div>
                         <div class="slider-section">
                             <img
-                                src="./assets/images/slider/temuco_carlos.jpg"
-                                alt=""
+                                src="./assets/images/slider/luisPublico.jpg"
+                                alt="Luis Borjas junto al publico"
+                                class="slider-img"
+                            />
+                        </div>
+                        <div class="slider-section">
+                            <img
+                                src="./assets/images/slider/fotoShow.jpg"
+                                alt="Los Náufragos en pleno show con su publico"
+                                class="slider-img"
+                            />
+                        </div>
+                        <div class="slider-section">
+                            <img
+                                src="./assets/images/slider/luis.jpg"
+                                alt="Luis Borjas en Temuco, Chile"
+                                class="slider-img"
+                            />
+                        </div>
+                        <div class="slider-section">
+                            <img
+                                src="./assets/images/slider/guillermo.jpg"
+                                alt="Guillermo en Temuco, Chile"
+                                class="slider-img"
+                            />
+                        </div>
+                        <div class="slider-section">
+                            <img
+                                src="./assets/images/slider/temucoCarlos.jpg"
+                                alt="Carlos Olano en Temuco, Chile"
+                                class="slider-img"
+                            />
+                        </div>
+                        <div class="slider-section">
+                            <img
+                                src="./assets/images/slider/temucoTodos.jpg"
+                                alt="Show de Los Náufragos en Temuco, Chile"
                                 class="slider-img"
                             />
                         </div>
                         <div class="slider-section">
                             <img
                                 src="./assets/images/slider/todos.jpg"
-                                alt=""
-                                class="slider-img"
-                            />
-                        </div>
-                        <div class="slider-section">
-                            <img
-                                src="./assets/images/slider/temuco.jpg"
-                                alt=""
+                                alt="Una foto grupal de Los Náufragos"
                                 class="slider-img"
                             />
                         </div>
@@ -107,7 +144,7 @@
                         convierten no solo en los número uno de la Argentina
                         sino también en el grupo moderno de mayor venta en el
                         mundo de habla castellana según lo certificó la revista
-                        Billboard de EE UU.En la década de 1990 el grupo logra
+                        Billboard de EE UU. En la década de 1990 el grupo logra
                         nueva repercusión a través del programa Videomatch,
                         conducido por Marcelo Tinelli, al interpretar las
                         cortinas musicales.
@@ -150,7 +187,7 @@
                             <span>Teléfono</span>
                             <input
                                 name="telefono"
-                                type="text"
+                                type="tel"
                                 class="form-control"
                                 id="telefono"
                                 placeholder="telefono"
@@ -188,10 +225,46 @@
                     />
                 </form>
             </section>
-
-            <!-- footer -->
-            <footer></footer>
         </section>
+
+        <!-- footer -->
+        <footer>
+            <table>
+                <thead>
+                    Redes Sociales
+                </thead>
+                <tr>
+                    <td>
+                        <a
+                            href="https://www.facebook.com/losnaufragos.oficial/"
+                            target="_blank"
+                        >
+                            <i class="fas fa-mobile"></i>
+                        </a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <a
+                            href="https://www.instagram.com/los_naufragos_oficial/"
+                            target="_blank"
+                        >
+                            <i class="fab fa-instagram-square"></i>
+                        </a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <a
+                            href="https://www.youtube.com/channel/UClBXfTVEaAPyhogVyKyQsOw"
+                            target="_blank"
+                        >
+                            <i class="fab fa-youtube-square"></i>
+                        </a>
+                    </td>
+                </tr>
+            </table>
+        </footer>
         <script src="./assets/js/main.js"></script>
         <script src="https://smtpjs.com/v3/smtp.js"></script>
         <script src="./assets/js/slider.js"></script>
